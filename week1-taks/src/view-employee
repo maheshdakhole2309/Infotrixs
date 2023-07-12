@@ -1,1 +1,130 @@
+package view;
 
+import controller.EmployeeController;
+import model.Employee;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class EmployeeView {
+    private EmployeeController employeeController;
+    private Scanner scanner;
+
+    public EmployeeView() {
+        employeeController = new EmployeeController();
+        scanner = new Scanner(System.in);
+        employeeController.loadDataFromFile();
+    }
+
+    public void run() {
+        int choice;
+        do {
+            System.out.println("===== Employee Management System =====");
+            System.out.println("1. Add Employee");
+            System.out.println("2. View All Employees");
+            System.out.println("3. Search Employee by ID");
+            System.out.println("4. Update Employee");
+            System.out.println("0. Exit");
+            System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline character
+
+            switch (choice) {
+                case 1:
+                    addEmployee();
+                    break;
+                case 2:
+                    viewAllEmployees();
+                    break;
+                case 3:
+                    searchEmployee();
+                    break;
+                case 4:
+                    updateEmployee();
+                    break;
+                case 0:
+                    System.out.println("Exiting... Thank you!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+            System.out.println();
+        } while (choice != 0);
+    }
+
+private void addEmployee() {
+    System.out.println("===== Add Employee =====");
+    System.out.print("Enter employee ID: ");
+    int id = scanner.nextInt();
+    scanner.nextLine(); // Consume newline character
+    System.out.print("Enter employee first name: ");
+    String firstName = scanner.nextLine();
+    System.out.print("Enter employee last name: ");
+    String lastName = scanner.nextLine();
+    System.out.print("Enter employee email: ");
+    String email = scanner.nextLine();
+    System.out.print("Enter employee phone number: ");
+    String phoneNumber = scanner.nextLine();
+    System.out.print("Enter employee address: ");
+    String address = scanner.nextLine();
+    System.out.print("Enter employee department: ");
+    String department = scanner.nextLine();
+    System.out.print("Enter employee salary: ");
+    double salary = scanner.nextDouble();
+    System.out.print("Enter employee age: ");
+    int age = scanner.nextInt();
+    scanner.nextLine(); // Consume newline character
+    System.out.print("Is the employee active (true/false): ");
+    boolean isActive = scanner.nextBoolean();
+    scanner.nextLine(); // Consume newline character
+
+    // Create an Employee object using the parameterized constructor
+    Employee employee = new Employee(id, firstName, lastName, email, phoneNumber, address, department,
+            salary, age, isActive);
+
+    employeeController.addEmployee(employee);
+    System.out.println("Employee added successfully!");
+}
+
+
+
+	public void viewAllEmployees() {
+        System.out.println("===== All Employees =====");
+        List<Employee> employees = employeeController.getAllEmployees();
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+
+    public void searchEmployee() {
+        System.out.println("===== Search Employee =====");
+        System.out.print("Enter employee ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        Employee employee = employeeController.getEmployeeById(id);
+        if (employee != null) {
+            System.out.println("Employee found:");
+            System.out.println(employee);
+        } else {
+            System.out.println("Employee not found!");
+        }
+    }
+
+    public void updateEmployee() {
+        System.out.println("===== Update Employee =====");
+        System.out.print("Enter employee ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        Employee employee = employeeController.getEmployeeById(id);
+        if (employee != null) {
+
+            employeeController.updateEmployee(employee);
+            System.out.println("Employee updated successfully!");
+        } else {
+            System.out.println("Employee not found!");
+        }
+    }
+}
