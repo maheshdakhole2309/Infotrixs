@@ -2,38 +2,15 @@
 [
   {
     "id": 1,
-    "firstName": "adcd",
-    "lastName": "efgh",
-    "email": "abc@gmail.com",
-    "phoneNumber": "9829379383",
-    "address": "hyd",
-    "department": "s/w",
-    "salary": 288.09,
-    "age": 20,
-    "isActive": true
-  },
-  {
-    "id": 2,
     "firstName": "mahesh",
     "lastName": "dakhole",
-    "email": "mahes123@gmail.com",
-    "phoneNumber": "743128394",
-    "address": "hyd",
-    "department": "s/w",
-    "salary": 3044.23,
-    "age": 34,
+    "email": "md@gmail.com",
+    "phoneNumber": "8668568759",
+    "address": "Hyderabad",
+    "department": "It and Services",
+    "salary": 20000,
+    "age": 25,
     "isActive": true
   },
-  {
-    "id": 1,
-    "firstName": "Nikhil",
-    "lastName": "Shrirame",
-    "email": "nikhil@gmail.com",
-    "phoneNumber": "9856325623",
-    "address": "hyd",
-    "department": "etc",
-    "salary": 2000000.0,
-    "age": 27,
-    "isActive": true
-  }
+ 
 ]
